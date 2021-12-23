@@ -1,22 +1,26 @@
-import logo from './logo.svg';
+import logo from './img/MiamiTech-Yearbook-Cover.png';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img src={logo} className="coverImg" alt="logo" />
+        <div className="card">
+          <p style={{marginTop: 0}}>Mint hasn't started</p>
+          <div className="btn btnDisabled">
+            Connect MetaMask
+          </div>
+        </div>
+
+        {/* <p>
+        We saw it happen.
+        <br/>
+        You can’t deny its existence.
+        <br/>
+        It’s here to stay.
+        </p> */}
+        
       </header>
     </div>
   );
