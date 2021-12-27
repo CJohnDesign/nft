@@ -1,55 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Sen&display=swap');
 
-.App {
-  text-align: center;
-  font-family: 'Sen', sans-serif;
-  font-size: .85em;
+html {
+  max-height: 100vmin;
+  font-family: 'Sen', sans-serif !important;
 }
 
-
+.App {
+  /* text-align: center; */
+  
+  /* font-size: .85em; */
+}
 
 .App-header {
   background-color: #ffefff;
-  min-height: 100vh;
+  min-height: 90vh;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* font-size: calc(10px + 2vmin); */
+  padding-bottom: 0.625rem;
 }
 
 .coverImg {
-  height: 120vmin;
-  margin-top: 18px;
+  width: 82%;
+  margin-top: 12px;
 }
 
 .card {
-  background-color: #ffffff;
-  border-radius: 9px;
-  box-shadow: 0px 8px 16px -2px #cecece;
-  padding: 21px 25px 22px;
-  position: relative;
-  top: -62px;
+  top: -52px;
+  text-align: center;
 }
 
-
-.btn {
-  background-color: #61dafb;
-  color: #fff;
-  padding: 7px 12px 8px;
-  border-radius: 2px;
-}
-
-.btnDisabled {
-  opacity: 0.35;
+.wallet {
+  width: 260px;
+  padding: 8px;
+  display: inline-block;
+  margin-bottom: 12px;
 }
 
 
 
 @media only screen and (min-width: 600px) {
+  .App-header {
+    background-color: #ffefff;
+    min-height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* font-size: calc(10px + 2vmin); */
+    padding-bottom: 2rem;
+  }
   .coverImg {
-    height: 78vmin;
-    margin-top: 18px;
+    width: initial;
+    height: 82vmin;
+    margin-top: 16px;
   }
 }
 
