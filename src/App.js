@@ -20,7 +20,7 @@ import "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyAW59-zNxIvefp99ptPiiSHtJkZqnV3X6s",
   authDomain: "freshman-year.firebaseapp.com",
-  projectId: "freshman-year",
+  projectId: "fyb",
   storageBucket: "freshman-year.appspot.com",
   messagingSenderId: "277534010170",
   appId: "1:277534010170:web:a662bfef4eff05c576fe03",
