@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import logo from "./img/MiamiTech-Yearbook-Cover.png";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'react-toastify/dist/ReactToastify.min.css';
 import { Card, Button, Row, Col } from "react-bootstrap";
+import { ToastContainer, toast } from 'react-toastify';
 import ModalWL from "./ModalWL.js";
 // import { InputGroup, Row, Form, Col, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
@@ -39,9 +41,6 @@ function App() {
   const [twitter, setTwitter] = useState("");
   const [email, setEmail] = useState("");
 
-  console.log("Name: " + wallet);
-  console.log("Twitter: " + twitter);
-  console.log("Email: " + email);
   return (
     <div className="App">
       <header className="App-header">
@@ -88,6 +87,17 @@ function App() {
             </Card>
           </Col>
         </Row> */}
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

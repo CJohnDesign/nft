@@ -9,7 +9,7 @@ const contract = require("../artifacts/contracts/FreshmanYear.sol/FreshmanYear.j
 const nftContract = new web3.eth.Contract(contract.abi, CONTRACT_ADDRESS)
 const {toBn} = require("evm-bn")
 
-async function makePublic(public) {
+async function changePrice(price) {
  const nonce = await web3.eth.getTransactionCount(PUBLIC_KEY, 'latest');
 
 //the transaction
@@ -18,7 +18,7 @@ async function makePublic(public) {
    'to': CONTRACT_ADDRESS,
    'nonce': nonce,
    'gas': 53204,
-   'data': nftContract.methods.setP(public).encodeABI()
+   'data': nftContract.methods.setPrice(toBn(price)).encodeABI()
  };
 
  const signPromise = web3.eth.accounts.signTransaction(tx, PRIVATE_KEY)
@@ -47,4 +47,4 @@ async function makePublic(public) {
   })
 }
 
-makePublic(true)
+changePrice("0.0001")

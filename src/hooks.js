@@ -12,11 +12,9 @@ export function useEagerConnect() {
     injected.isAuthorized().then((isAuthorized) => {
       if (isAuthorized) {
         activate(injected, undefined, true).catch(() => {
-          console.log('authorized')
           setTried(true)
         })
       } else {
-        console.log('not authorized')
         setTried(true)
       }
     })
@@ -62,11 +60,6 @@ export function useInactiveListener(suppress = false) {
       ethereum.on('accountsChanged', handleAccountsChanged)
       ethereum.on('networkChanged', handleNetworkChanged)
 
-      // console.log(ethereum.enable())
-      console.log('eth_accounts')
-      // ethereum.getAccounts().then(accounts => {
-      //   console.log(accounts)
-      // })
       ethereum.sendAsync({
         method: "eth_accounts",
         params: [],

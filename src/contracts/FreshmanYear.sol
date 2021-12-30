@@ -117,6 +117,10 @@ contract FreshmanYear is ERC721Enumerable, Ownable, PaymentSplitter, ReentrancyG
         price = _newPrice;
     }
 
+    function getPrice() public view returns (uint256) {
+        return price;
+    }
+
     //max switch
     function setMax(uint256 _newMaxMintAmount) public onlyOwner {
         maxMint = _newMaxMintAmount;
