@@ -52,6 +52,7 @@
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.3",
     "ethers": "^5.5.2",
+    "evm-bn": "^1.1.1",
     "hardhat": "^2.8.0"
   }
 }
