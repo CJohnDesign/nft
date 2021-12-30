@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "./img/MiamiTech-Yearbook-Cover.png";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'react-toastify/dist/ReactToastify.min.css';
 import { Card, Button, Row, Col } from "react-bootstrap";
+import { ToastContainer, toast } from 'react-toastify';
 import ModalWL from "./ModalWL.js";
 // import { InputGroup, Row, Form, Col, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
@@ -12,6 +14,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import "firebase/analytics";
 import "firebase/firestore";
+import Mint from "./Mint";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,7 +23,7 @@ import "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyAW59-zNxIvefp99ptPiiSHtJkZqnV3X6s",
   authDomain: "freshman-year.firebaseapp.com",
-  projectId: "freshman-year",
+  projectId: "fyb",
   storageBucket: "freshman-year.appspot.com",
   messagingSenderId: "277534010170",
   appId: "1:277534010170:web:a662bfef4eff05c576fe03",
@@ -38,9 +41,6 @@ function App() {
   const [twitter, setTwitter] = useState("");
   const [email, setEmail] = useState("");
 
-  console.log("Name: " + wallet);
-  console.log("Twitter: " + twitter);
-  console.log("Email: " + email);
   return (
     <div className="App">
       <header className="App-header">
@@ -49,6 +49,11 @@ function App() {
             <img src={logo} className="coverImg" alt="logo" />
             <Card className="p-0" style={{ width: "18rem", margin: "0 auto" }}>
               <Card.Body className="d-grid gap-1">
+                <Card.Title>Mint</Card.Title>
+                <Mint />
+                {/* SetWL={SetWL(db)} */}
+              </Card.Body>
+              {/*<Card.Body className="d-grid gap-1">
                 <Card.Title>Freshman Year NFT</Card.Title>
                 <Button
                   variant="primary"
@@ -68,8 +73,8 @@ function App() {
                   show={modalShow}
                   onHide={() => setModalShow(false)}
                 />
-                {/* SetWL={SetWL(db)} */}
-              </Card.Body>
+                {/* SetWL={SetWL(db)} *}
+              </Card.Body>*/}
             </Card>
           </Col>
         </Row>
@@ -82,8 +87,19 @@ function App() {
             </Card>
           </Col>
         </Row> */}
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
 
-export default App;
+export default App
