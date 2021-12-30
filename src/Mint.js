@@ -3,7 +3,7 @@ import { Button, ButtonGroup, Modal } from "react-bootstrap";
 import { toast } from 'react-toastify';
 import { Web3ReactProvider, useWeb3React, UnsupportedChainIdError } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
-import { formatEther, parseEther } from '@ethersproject/units'
+import { formatEther, parseEther, parseUnits } from '@ethersproject/units'
 import { Contract } from '@ethersproject/contracts'
 import { useEagerConnect, useInactiveListener } from './hooks'
 import { injected } from './connectors'
@@ -12,7 +12,7 @@ const contract = require("./artifacts/contracts/FreshmanYear.sol/FreshmanYear.js
 const CONTRACT_ADDRESS = process.env.REACT_APP_CONTRACT_ADDRESS
 
 function Mint() {
-  const [price, setPrice] = useState(0.0001)
+  const [price, setPrice] = useState("0.0001")
   const [amount, setAmount] = useState(1)
   const [success, setSuccess] = useState(null)
 	const context = useWeb3React()
@@ -45,11 +45,13 @@ function Mint() {
   // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
   useInactiveListener(!triedEager || !!activatingConnector)
 
+  const totalPrice = parseUnits(price).mul(amount)
+
   function publicMint() {
     setSuccess(null)
     const signer = library.getSigner(account)
     const contract_instance = new Contract(CONTRACT_ADDRESS, contract.abi, signer)
-    contract_instance.mintPublic(amount, {value: parseEther((price * amount).toString())}).then((r) => {
+    contract_instance.mintPublic(amount, {value: totalPrice}).then((r) => {
       setSuccess(r)
     }).catch((e) => {
       if(e.code == "INSUFFICIENT_FUNDS") {
@@ -89,7 +91,7 @@ function Mint() {
           className="mt-1"
           onClick={publicMint}
         >
-          Mint {amount} for {price * amount} ETH
+          Mint {amount} for {formatEther(totalPrice)} ETH
         </Button>
         <Button
           variant="info"
