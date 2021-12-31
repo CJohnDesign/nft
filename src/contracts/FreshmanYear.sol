@@ -42,6 +42,10 @@ contract FreshmanYear is ERC721Enumerable, Ownable, PaymentSplitter, ReentrancyG
         setURI(_initBaseURI);
     }
 
+    function contractURI() public view returns (string memory) {
+        return "ipfs://QmZKikkC1L46WZAAsQHojXYmPJcvRNgWjXiWGAENA7dxub";
+    }
+
     // public minting
     function mintPublic(uint256 _tokenAmount) public payable {
         uint256 s = totalSupply();

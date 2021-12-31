@@ -1,8 +1,10 @@
+const { ethers } = require("hardhat");
+
 async function main() {
   const FreshmanYear = await ethers.getContractFactory("FreshmanYear")
 
   // Start deployment, returning a promise that resolves to a contract object
-  const contract = await FreshmanYear.deploy("Freshman Year", "fyb", "http://ipfs.io/ipfs/QmWVLRzbpM7rATE3tRtjj5AZ8yoJVR3wVjWcLrKJYovN4y")
+  const contract = await FreshmanYear.deploy("Freshman Year", "fyb", "ipfs://QmccLhDWdR5PodhmSpZogdhzLhG2Knyk8ziF58r7UDpZQL/")
   console.log("Contract deployed to address:", contract.address)
 }
 
@@ -12,4 +14,3 @@ main()
     console.error(error)
     process.exit(1)
   })
-
