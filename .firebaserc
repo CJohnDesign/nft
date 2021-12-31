@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "freshman-year"
+  },
+  "targets": {
+    "freshman-year": {
+      "hosting": {
+        "fybnft": [
+          "nft"
+        ]
+      }
+    }
   }
 }

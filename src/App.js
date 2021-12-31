@@ -26,8 +26,8 @@ const firebaseConfig = {
   projectId: "fyb",
   storageBucket: "freshman-year.appspot.com",
   messagingSenderId: "277534010170",
-  appId: "1:277534010170:web:a662bfef4eff05c576fe03",
-  measurementId: "G-HCHWC65K40",
+  appId: "1:277534010170:web:3e6c5a2fb116ac3c76fe03",
+  measurementId: "G-TR7PVCH020"
 };
 
 // Initialize Firebase

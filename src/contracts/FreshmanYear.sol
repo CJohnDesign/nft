@@ -44,9 +44,9 @@ contract FreshmanYear is ERC721Enumerable, Ownable, PaymentSplitter, ReentrancyG
 
     // public minting
     function mintPublic(uint256 _tokenAmount) public payable {
-        uint256 s = totalSupply();
+        uint256 s = totalSupply() + 1;
         require(publicStatus, "Public sale is not active" );
-        require(msg.sender.balance > 0 ether, "You  Broke");
+        require(msg.sender.balance > 0 ether, "Gonna need some ETH");
         require(_tokenAmount > 0, "Mint more than 0" );
         require(_tokenAmount <= maxMint, "Mint less");
         require( s + _tokenAmount <= maxSupply, "Mint less");
@@ -60,7 +60,7 @@ contract FreshmanYear is ERC721Enumerable, Ownable, PaymentSplitter, ReentrancyG
 
     // whitelist minting
     function mintWhitelist(uint256 _tokenAmount) public payable {
-        uint256 s = totalSupply();
+        uint256 s = totalSupply() + 1;
         uint256 wl = onWhitelist[msg.sender];
 
         require(whitelistStatus, "Whitelist is not active" );
@@ -80,7 +80,7 @@ contract FreshmanYear is ERC721Enumerable, Ownable, PaymentSplitter, ReentrancyG
     function gift(uint[] calldata gifts, address[] calldata recipient) external onlyOwner {
         require(gifts.length == recipient.length);
         uint g = 0;
-        uint256 s = totalSupply();
+        uint256 s = totalSupply() + 1;
         for(uint i = 0; i < gifts.length; ++i){
             g += gifts[i];
         }
