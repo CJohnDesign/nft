@@ -42,9 +42,13 @@ contract FreshmanYear is ERC721Enumerable, Ownable, PaymentSplitter, ReentrancyG
         setURI(_initBaseURI);
     }
 
+    function contractURI() public view returns (string memory) {
+        return "ipfs://QmZKikkC1L46WZAAsQHojXYmPJcvRNgWjXiWGAENA7dxub";
+    }
+
     // public minting
     function mintPublic(uint256 _tokenAmount) public payable {
-        uint256 s = totalSupply();
+        uint256 s = totalSupply() + 1;
         require(publicStatus, "Public sale is not active" );
         require(msg.sender.balance > 0 ether, "You  Broke");
         require(_tokenAmount > 0, "Mint more than 0" );
@@ -60,7 +64,7 @@ contract FreshmanYear is ERC721Enumerable, Ownable, PaymentSplitter, ReentrancyG
 
     // whitelist minting
     function mintWhitelist(uint256 _tokenAmount) public payable {
-        uint256 s = totalSupply();
+        uint256 s = totalSupply() + 1;
         uint256 wl = onWhitelist[msg.sender];
 
         require(whitelistStatus, "Whitelist is not active" );
@@ -80,11 +84,12 @@ contract FreshmanYear is ERC721Enumerable, Ownable, PaymentSplitter, ReentrancyG
     function gift(uint[] calldata gifts, address[] calldata recipient) external onlyOwner {
         require(gifts.length == recipient.length);
         uint g = 0;
-        uint256 s = totalSupply();
+        uint256 s = totalSupply() + 1; 
+        // AP, my goal was to number them 1-305, not 0-304. Is this correct?
         for(uint i = 0; i < gifts.length; ++i){
             g += gifts[i];
         }
-        require( s + g <= maxSupply, "Too many" );
+        require( s + g <= maxSupply, "Not enough left" );
         delete g;
         for(uint i = 0; i < recipient.length; ++i){
             for(uint j = 0; j < gifts[i]; ++j){
