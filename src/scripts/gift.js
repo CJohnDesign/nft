@@ -7,9 +7,10 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3")
 const web3 = createAlchemyWeb3(API_URL)
 const contract = require("../artifacts/contracts/FreshmanYear.sol/FreshmanYear.json")
 const nftContract = new web3.eth.Contract(contract.abi, CONTRACT_ADDRESS)
-const {toBn} = require("evm-bn")
+const list = ["0x1b7518d3B45D22595AdBE9C3C99F75508dc062De"]
+const total = [1]
 
-async function changePrice(price) {
+async function gift(newURI) {
  const nonce = await web3.eth.getTransactionCount(PUBLIC_KEY, 'latest');
 
 //the transaction
@@ -17,8 +18,8 @@ async function changePrice(price) {
    'from': PUBLIC_KEY,
    'to': CONTRACT_ADDRESS,
    'nonce': nonce,
-   'gas': 53204,
-   'data': nftContract.methods.setPrice(toBn(price)).encodeABI()
+   'gas': 83204,
+   'data': nftContract.methods.gift(total, list).encodeABI()
  };
 
  const signPromise = web3.eth.accounts.signTransaction(tx, PRIVATE_KEY)
@@ -47,4 +48,4 @@ async function changePrice(price) {
   })
 }
 
-changePrice("0.0001")
+gift(list, total)

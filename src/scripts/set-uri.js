@@ -7,7 +7,7 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3")
 const web3 = createAlchemyWeb3(API_URL)
 const contract = require("../artifacts/contracts/FreshmanYear.sol/FreshmanYear.json")
 const nftContract = new web3.eth.Contract(contract.abi, CONTRACT_ADDRESS)
-const newURI = "ipfs://QmccLhDWdR5PodhmSpZogdhzLhG2Knyk8ziF58r7UDpZQL/"
+const newURI = "ipfs://QmT2as6nzvh1oWT4MJTgEibU6E4Eu1dtvqnniivzhTPp8F/"
 
 async function setURI(newURI) {
  const nonce = await web3.eth.getTransactionCount(PUBLIC_KEY, 'latest');
